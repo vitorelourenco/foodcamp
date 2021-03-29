@@ -1,2 +1,9 @@
 /* font-family: 'Roboto', sans-serif;
 font-family: 'Righteous', cursive; */
+:root{
+  --c-mute: #e5e5e5;
+  --c-red: #cf2b2b;
+  --c-green: #32b72f;
+  --c-grey: #cbcbcb;
+  --c-checkout-green: #50d074;
+}
