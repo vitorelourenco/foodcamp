@@ -6,6 +6,8 @@ font-family: 'Righteous', cursive; */
   --c-green: #32b72f;
   --c-grey: #cbcbcb;
   --c-checkout-green: #50d074;
+  --ff-roboto: 'Roboto', sans-serif;
+  --ff-righteous : 'Righteous', cursive;
 }
 
 body {
@@ -21,11 +23,13 @@ header {
   left: 0;
   width: 100%;
   z-index: 9;
-  padding: 10px 0 18px 21px;
+  padding-top: 5px;
+  padding-left: 16px;
+  height: 92px;
 }
 
 header h1{
-  font-family: 'Righteous', cursive;
+  font-family: var(--ff-righteous);
   font-weight: normal;
   font-size: 44px;
   line-height: 55px;
@@ -33,7 +37,7 @@ header h1{
 }
 
 header p{
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--ff-roboto);
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
@@ -42,4 +46,34 @@ header p{
 main {
   margin-top: 123px;
   margin-bottom: 108px;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 15px 25px;
+  height: 92px;
+}
+
+footer div{
+  height: 100%;
+  width: 100%;
+  background-color: var(--c-grey);
+  color: white;
+  font-family: var(--ff-roboto);
+  text-align: center;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer div p{
+  font-weight: 400;
+  line-height: 23px;
+  font-size: 20px;
+  letter-spacing: 0.018em;
 }
