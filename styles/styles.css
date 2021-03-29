@@ -2,6 +2,7 @@
 font-family: 'Righteous', cursive; */
 :root{
   --mute: #e5e5e5;
+  --dark: #333;
   --red: #cf2b2b;
   --green: #32b72f;
   --grey: #cbcbcb;
@@ -16,6 +17,10 @@ body {
 
 .bg-grey {
   background-color: var(--grey);
+}
+
+.bg-white {
+  background-color: white;
 }
 
 header {
@@ -48,8 +53,83 @@ header p{
 }
 
 main {
-  margin-top: 123px;
-  margin-bottom: 108px;
+  margin: 123px 0 108px 19px;
+}
+
+section{
+  margin-top: 27px;
+}
+
+section:first-child{
+  margin-top: 31px;
+}
+
+section h2 {
+  color: var(--dark);
+  letter-spacing: 0.018em;
+  line-height: 32px;
+  font-size: 26px;
+  font-family: var(--ff-righteous);
+  margin-bottom: 18px;
+}
+
+article {
+  width: 172px;
+  height: 216px;
+  border-radius: 9px;
+  box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.25);
+  margin-right: 16px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--ff-roboto);
+  border: 5px solid white;
+  padding: 14px 10px;
+}
+
+article img {
+  width: 144px;
+  height: 87px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+article h3{
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 18.75px;
+  color: var(--dark);
+}
+
+.meal-description{
+  color: #a6a6a6;
+  line-height: 18px;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.price-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.meal-price{
+  color: black;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: normal;
+}
+
+.checked{
+  font-size: 19px;
+  color: var(--green);
+}
+
+
+.selected{
+  border: 5px solid var(--green);
 }
 
 footer{
@@ -73,7 +153,7 @@ footer div{
   justify-content: center;
 }
 
-footer div p{
+.checkout-text{
   font-family: var(--ff-roboto);
   font-weight: 400;
   line-height: 23px;

@@ -20,19 +20,23 @@
     <section>
       <h2>Primeiro, seu prato</h2>
       <div>
-        <article>
-          <img src="https://tinyurl.com/4tn6m4r" alt="food">
-          <h3>Frango Yin Yang</h3>
-          <p>Um pouco de batata, um pouco de salada</p>
-          <p>R$ 14,90</p>
+        <article class="selected">
+            <img src="https://tinyurl.com/4tn6m4r" alt="food">
+            <h3>Frango Yin Yang</h3>
+            <p class="meal-description">Um pouco de batata, um pouco de salada</p>
+            <div class="price-wrapper">
+              <p class="meal-price">R$ 14,90</p>
+              <ion-icon class="checked" name="checkmark-circle"></ion-icon>
+            </div>
         </article>
       </div>
     </section>
   </main>
   <footer>
     <div class="bg-grey">
-      <p>Selecione os 3 itens<br>para fechar o pedido</p>
+      <p class="checkout-text">Selecione os 3 itens<br>para fechar o pedido</p>
     </div>
   </footer>
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 </html>
