@@ -7,3 +7,39 @@ font-family: 'Righteous', cursive; */
   --c-grey: #cbcbcb;
   --c-checkout-green: #50d074;
 }
+
+body {
+  background-color: var(--c-mute);
+}
+
+header {
+  background-color: var(--c-red);
+  color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+  padding: 10px 0 18px 21px;
+}
+
+header h1{
+  font-family: 'Righteous', cursive;
+  font-weight: normal;
+  font-size: 44px;
+  line-height: 55px;
+  letter-spacing: -0.012em;
+}
+
+header p{
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+main {
+  margin-top: 123px;
+  margin-bottom: 108px;
+}
