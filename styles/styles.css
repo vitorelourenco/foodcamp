@@ -245,11 +245,17 @@ footer button{
 .order-line {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 13px;
 }
 
 .order-line:last-child{
   margin-bottom: 0;
+}
+
+.order-line *:last-child{
+  flex-shrink: 0;
+  margin-left: 5px;
 }
 
 .confirm,
