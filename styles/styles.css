@@ -73,13 +73,13 @@ section h2 {
 .menu{
   overflow-x: scroll;
   display: flex;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  /* -ms-overflow-style: none;
+  scrollbar-width: none; */
 }
 
-.menu::-webkit-scrollbar{
+/* .menu::-webkit-scrollbar{
   display: none;
-}
+} */
 
 .menu-item {
   width: 172px;
