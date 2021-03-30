@@ -39,6 +39,11 @@ body {
   cursor: pointer;
 }
 
+.order-line {
+  display: flex;
+  justify-content: space-between;
+}
+
 header {
   background-color: var(--red);
   color: white;
@@ -176,6 +181,7 @@ footer button{
   align-items: center;
   justify-content: center;
   border: none;
+  outline: none;
 }
 
 .goto-checkout-text{
@@ -186,7 +192,7 @@ footer button{
   letter-spacing: 0.018em;
 }
 
-.checkout{
+.checkout-background{
   position: fixed;
   top: 0;
   bottom: 0;
@@ -194,4 +200,51 @@ footer button{
   right: 0;
   background-color: rgba(255, 255, 255, 0.9);
   z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout{
+  width: calc(100% - 20px);
+  padding: 20px;
+  max-width: 414px;
+  background-color: var(--checkout-green);
+  color: white;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--ff-roboto);
+  border-radius: 9px;
+}
+
+.checkout > * {
+  margin-bottom: 24px;
+}
+
+.checkout > *:last-child{
+  margin-bottom: 0;
+}
+
+.confirm,
+.cancel{
+  border: none;
+  border-radius: 20px;
+  height: 52px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  letter-spacing: 0.018em;
+  line-height: 26px;
+}
+
+.confirm{
+  color: var(--checkout-green);
+  background-color: white;
+}
+
+.cancel{
+  background-color: var(--checkout-green);
+  color: white;
 }

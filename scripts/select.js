@@ -1,6 +1,17 @@
+let checkoutFooter = document.querySelector("FOOTER");
+let checkoutButton = checkoutFooter.querySelector("BUTTON");
+let selectedMeal;
+let selectedDrink;
+let selectedDessert;
+let selectedArr = [selectedMeal, selectedDrink, selectedDessert];
+let selectSectionIDs = ["meals", "drinks", "desserts"];
+let orderName;
+let orderAddress;
+let checkoutScreen = document.querySelector(".checkout-background");
+let cancelOrder = document.querySelector(".cancel");
+let placeOrder = document.querySelector(".confirm");
+
 function updateCheckoutStatus(selectedArr){
-  let checkoutFooter = document.querySelector("FOOTER");
-  let checkoutButton = checkoutFooter.querySelector("BUTTON");
   let p = checkoutButton.querySelector("P");
   let textNode;
 
@@ -26,13 +37,6 @@ function updateCheckoutStatus(selectedArr){
   checkoutButton.classList.add("bg-green");
 
 } 
-
-let selectedMeal;
-let selectedDrink;
-let selectedDessert;
-let selectedArr = [selectedMeal, selectedDrink, selectedDessert];
-let selectSectionIDs = ["meals", "drinks", "desserts"];
-
 
 for (let i=0; i<selectedArr.length; i++){
   let currentGroup = document.getElementById(selectSectionIDs[i]);
@@ -71,47 +75,15 @@ for (let i=0; i<selectedArr.length; i++){
   })
 }
 
+checkoutButton.addEventListener("click", (e) => {
+  if (checkoutButton.disabled) return;
+  orderName = prompt("Digite o seu nome");
+  orderAddress = prompt("Digite o seu endereco");
+  checkoutScreen.classList.remove("d-none");
+  let orderBox = document.querySelector(".order");
 
+});
 
-// let mealGroup = document.getElementById("meals");
-// let mealArticles = mealGroup.querySelectorAll("ARTICLE");
-// mealArticles.forEach(item => {
-//   item.addEventListener("click", (e) => {
-//     let optionSelected = e.target;
-//     while (optionSelected.tagName != "ARTICLE"){
-//       optionSelected = optionSelected.parentNode; 
-//     }
-
-//     let checky;
-
-//     if (optionSelected === selectedMeal){
-//       selectedMeal.classList.remove("selected");
-//       checky = selectedMeal.querySelector(".checked");
-//       checky.classList.add("d-none");
-//       selectedMeal = undefined;
-//       return;
-//     }
-
-//     if (selectedMeal){
-//       selectedMeal.classList.remove("selected");
-//       checky = selectedMeal.querySelector(".checked");
-//       checky.classList.add("d-none");
-//     }
-
-//     selectedMeal = optionSelected;
-//     selectedMeal.classList.add("selected");
-//     checky = selectedMeal.querySelector(".checked");
-//     checky.classList.remove("d-none");
-    
-//     updateCheckoutStatus();
-//   })
-// });
-
-
-
-
-
-
-function pick(group, item){
-
-}
+cancelOrder.addEventListener("click", (e) => {
+  checkoutScreen.classList.add("d-none");
+});
