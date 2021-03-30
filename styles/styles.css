@@ -23,6 +23,14 @@ body {
   background-color: white;
 }
 
+.d-none{
+  display: none;
+}
+
+.d-initial{
+  display: initial;
+}
+
 header {
   background-color: var(--red);
   color: white;
@@ -73,7 +81,12 @@ section h2 {
   margin-bottom: 18px;
 }
 
-article {
+.menu{
+  overflow: hidden;
+  display: flex;
+}
+
+.menu-item {
   width: 172px;
   height: 216px;
   border-radius: 9px;
@@ -88,21 +101,21 @@ article {
   padding: 14px 10px;
 }
 
-article img {
+.menu-item img {
   width: 144px;
   height: 87px;
   object-fit: cover;
   border-radius: 4px;
 }
 
-article h3{
+.menu-item h3{
   font-weight: bold;
   font-size: 16px;
   line-height: 18.75px;
   color: var(--dark);
 }
 
-.meal-description{
+.unit-description{
   color: #a6a6a6;
   line-height: 18px;
   font-size: 15px;
@@ -115,7 +128,7 @@ article h3{
   justify-content: space-between;
 }
 
-.meal-price{
+.unit-price{
   color: black;
   font-size: 16px;
   line-height: 19px;
@@ -126,7 +139,6 @@ article h3{
   font-size: 19px;
   color: var(--green);
 }
-
 
 .selected{
   border: 5px solid var(--green);
@@ -153,10 +165,20 @@ footer div{
   justify-content: center;
 }
 
-.checkout-text{
+.goto-checkout-text{
   font-family: var(--ff-roboto);
   font-weight: 400;
   line-height: 23px;
   font-size: 20px;
   letter-spacing: 0.018em;
+}
+
+.checkout{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 99;
 }
