@@ -104,7 +104,7 @@ checkoutButton.addEventListener("click", (e) => {
     tempStr = tempStr.replace(",","");
     priceCount += parseInt(tempStr, 10);
   }
-  
+
   total = priceCount/100;
   totalStr = "R$ " + total.toFixed(2).toString().replace(".",",");
 
@@ -136,5 +136,6 @@ Nome: ${orderName}\n
 Endereco: ${orderAddress}\n`;
   const encodedOrder = encodeURIComponent(message);
   const fullUrl = "https://wa.me/5521971275567?text=" + encodedOrder;
+  checkoutScreen.classList.add("d-none");
   window.open(fullUrl);
 });
