@@ -27,10 +27,6 @@ body {
   background-color: white;
 }
 
-.d-none{
-  display: none !important;
-}
-
 .d-initial{
   display: initial;
 }
@@ -283,4 +279,6 @@ footer button{
   color: white;
 }
 
-
+.d-none{
+  display: none;
+}
