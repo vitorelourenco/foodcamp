@@ -99,6 +99,7 @@ section h2 {
   font-family: var(--ff-roboto);
   border: 5px solid white;
   padding: 14px 10px;
+  cursor: pointer;
 }
 
 .menu-item img {
@@ -155,7 +156,7 @@ footer{
   height: 92px;
 }
 
-footer div{
+footer button{
   height: 100%;
   width: 100%;
   color: white;
@@ -163,6 +164,8 @@ footer div{
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  border: none;
 }
 
 .goto-checkout-text{
