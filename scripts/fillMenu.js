@@ -14,7 +14,7 @@ let meals = [
     price: "R$ 9,90"
   },
   {
-    imgsrc : "assets/images/depalmito.jpg",
+    imgsrc : "assets/images/depalmito.webp",
     imgalt : "Pastel de Palmito",
     meal : "Pastelao de Palmito",
     description : "Melhor que o da feira! Juro!",
@@ -62,7 +62,7 @@ let desserts = [
     price: "R$ 6,00"
   },
   {
-    imgsrc : "assets/images/dechocolatebranco.webp",
+    imgsrc : "assets/images/dechocolatebranco.jpg",
     imgalt : "Pastel de Chocolate Branco",
     meal : "Pastel de Chocolate Branco",
     description : "Sim, isso existe",
@@ -119,4 +119,9 @@ for(let i=0; i<sectionIDs.length; i++){
   let currentSection = document.getElementById(sectionIDs[i]);
   let currentMenu = currentSection.querySelector(".menu");
   sectionArrs[i].forEach(elem => makeMenuItem(elem, currentMenu));
+  let spacer = document.createElement("P");
+  spacer.classList.add("spacer");
+  let blankContent = document.createTextNode("_");
+  spacer.appendChild(blankContent);
+  currentMenu.appendChild(spacer);
 }

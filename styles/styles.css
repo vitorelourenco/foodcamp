@@ -95,8 +95,14 @@ section h2 {
 }
 
 .menu{
-  overflow: hidden;
+  overflow-x: scroll;
   display: flex;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.menu::-webkit-scrollbar{
+  display: none;
 }
 
 .menu-item {
@@ -155,16 +161,22 @@ section h2 {
   margin-top: 20px;
 }
 
-.unit-price{
+.unit-price {
   color: black;
   font-size: 16px;
   line-height: 19px;
   font-weight: normal;
 }
 
-.checked{
+.checked {
   font-size: 19px;
   color: var(--green);
+}
+
+.spacer {
+  width: 16px;
+  height: 100%;
+  color: var(--mute);
 }
 
 .selected{
@@ -241,7 +253,7 @@ footer button{
 .order-line {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin-bottom: 13px;
 }
 
@@ -266,7 +278,6 @@ footer button{
   line-height: 26px;
   margin-bottom: 1px;
   font-size: 22px;
-
 }
 
 .confirm{

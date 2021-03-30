@@ -80,6 +80,8 @@ checkoutButton.addEventListener("click", (e) => {
   orderAddress = prompt("Digite o seu endereco");
   checkoutScreen.classList.remove("d-none");
   let orderBox = document.querySelector(".order");
+  orderBox.innerHTML = "";
+
   let oLine;
   let oItem;
   let oPrice;
