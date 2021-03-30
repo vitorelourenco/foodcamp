@@ -61,11 +61,11 @@ header p{
 }
 
 main {
-  margin: 123px 0 108px 19px;
+  margin: 123px 0 108px 6px;
 }
 
 section{
-  margin-top: 27px;
+  margin-top: 17px;
 }
 
 section:first-child{
@@ -79,12 +79,12 @@ section h2 {
   font-size: 26px;
   font-family: var(--ff-righteous);
   margin-bottom: 18px;
+  margin-left: 10px;
 }
 
 .menu{
   overflow: hidden;
   display: flex;
-  margin: 10px;
 }
 
 .menu-item {
@@ -101,6 +101,7 @@ section h2 {
   border: 5px solid white;
   padding: 14px 10px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .menu-item img {
@@ -144,6 +145,7 @@ section h2 {
 
 .selected{
   border: 5px solid var(--green);
+  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
 footer{
