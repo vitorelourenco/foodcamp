@@ -35,6 +35,10 @@ body {
   display: initial;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 header {
   background-color: var(--red);
   color: white;
@@ -171,7 +175,6 @@ footer button{
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   border: none;
 }
 

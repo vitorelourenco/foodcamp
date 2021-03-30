@@ -1,18 +1,30 @@
 function updateCheckoutStatus(selectedArr){
   let checkoutFooter = document.querySelector("FOOTER");
   let checkoutButton = checkoutFooter.querySelector("BUTTON");
-  console.log(selectedArr[0]);
-  console.log(selectedArr[1]);
-  console.log(selectedArr[2]);
+  let p = checkoutButton.querySelector("P");
+  let textNode;
 
   if (!selectedArr[0] || !selectedArr[1] || !selectedArr[2]){
     checkoutButton.classList.remove("bg-green");
     checkoutButton.classList.add("bg-grey");
+    p.innerHTML = "";
+    textNode = document.createTextNode("Selecione os 3 itens");
+    p.appendChild(textNode);
+    p.appendChild(document.createElement("BR"));
+    textNode = document.createTextNode("para fechar o pedido");
+    p.appendChild(textNode);
+    checkoutButton.classList.remove("pointer");
+    checkoutButton.disabled = true;
     return;
   }
-  console.log("passed");
+  p.innerHTML = "";
+  textNode = document.createTextNode("Fechar Pedido");
+  p.appendChild(textNode);
+  checkoutButton.disabled = false;
+  checkoutButton.classList.add("pointer");
   checkoutButton.classList.remove("bg-grey");
   checkoutButton.classList.add("bg-green");
+
 } 
 
 let selectedMeal;

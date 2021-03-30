@@ -85,8 +85,6 @@ function makeMenuItem (elem, obj) {
   node.appendChild(divWrapper);
 
   obj.appendChild(node);
-
-  return;
 }
 
 let sectionArrs = [meals, drinks, desserts];
