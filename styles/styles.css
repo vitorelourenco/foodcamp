@@ -84,6 +84,7 @@ section h2 {
 .menu{
   overflow: hidden;
   display: flex;
+  margin: 10px;
 }
 
 .menu-item {
