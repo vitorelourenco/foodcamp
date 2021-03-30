@@ -290,3 +290,16 @@ footer button{
   cursor: pointer;
 }
 
+@media (max-width: 738px){
+  .menu{
+    overflow-x: scroll;
+    display: flex;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .menu::-webkit-scrollbar{
+    display: none;
+  }
+}
+
