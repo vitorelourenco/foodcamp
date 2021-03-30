@@ -89,8 +89,9 @@ function makeMenuItem (elem, obj) {
   return;
 }
 
-let sectionIDs = ["meals", "drinks", "desserts"];
 let sectionArrs = [meals, drinks, desserts];
+let sectionIDs = ["meals", "drinks", "desserts"];
+
 
 for(let i=0; i<sectionIDs.length; i++){
   let currentSection = document.getElementById(sectionIDs[i]);

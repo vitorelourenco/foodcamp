@@ -19,6 +19,10 @@ body {
   background-color: var(--grey);
 }
 
+.bg-green {
+  background-color: var(--green);
+}
+
 .bg-white {
   background-color: white;
 }
