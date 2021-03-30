@@ -5,10 +5,7 @@ let selectedDrink;
 let selectedDessert;
 let selectedArr = [selectedMeal, selectedDrink, selectedDessert];
 let selectSectionIDs = ["meals", "drinks", "desserts"];
-let orderName;
-let orderAddress;
 let checkoutScreen = document.querySelector(".checkout-background");
-let placeOrder = document.querySelector(".confirm");
 
 function updateCheckoutStatus(selectedArr){
   let p = checkoutButton.querySelector("P");
@@ -74,10 +71,13 @@ for (let i=0; i<selectedArr.length; i++){
   })
 }
 
+let totalStr;
+let orderName;
+let orderAddress;
 checkoutButton.addEventListener("click", (e) => {
   if (checkoutButton.disabled) return;
-  // orderName = prompt("Digite o seu nome");
-  // orderAddress = prompt("Digite o seu endereco");
+  orderName = prompt("Digite o seu nome");
+  orderAddress = prompt("Digite o seu endereco");
   checkoutScreen.classList.remove("d-none");
   let orderBox = document.querySelector(".order");
   let oLine;
@@ -85,7 +85,6 @@ checkoutButton.addEventListener("click", (e) => {
   let oPrice;
   let priceCount = 0;
   let total;
-  let totalStr;
   for (let i=0; i<selectedArr.length; i++){
     oLine = document.createElement("DIV");
     oItem = document.createElement("P");
@@ -116,8 +115,23 @@ checkoutButton.addEventListener("click", (e) => {
   orderBox.appendChild(oLine);
 });
 
-
 let cancelOrder = document.querySelector(".cancel");
 cancelOrder.addEventListener("click", (e) => {
   checkoutScreen.classList.add("d-none");
+});
+
+let placeOrder = document.querySelector(".confirm");
+placeOrder.addEventListener("click", (e) => {
+  let message = 
+`Ola, gostaria de fazer o pedido:\n
+- Prato: ${selectedArr[0].querySelector("H3").textContent}\n
+- Bebida: ${selectedArr[1].querySelector("H3").textContent}\n
+- Sobremesa: ${selectedArr[2].querySelector("H3").textContent}\n
+Total: ${totalStr}\n\n
+Nome: ${orderName}\n
+Endereco: ${orderAddress}\n`;
+  let encodedOrder = encodeURIComponent(message);
+  let fullUrl = "https://wa.me/5521971275567?text=" + encodedOrder;
+  window.open(fullUrl);
+
 });
