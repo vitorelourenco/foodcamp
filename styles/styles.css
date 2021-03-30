@@ -11,12 +11,12 @@ font-family: 'Righteous', cursive; */
   --ff-righteous : 'Righteous', cursive;
 }
 
-header,
+/* header,
 main, 
 footer {
   max-width: 414px;
   margin-left: max(0px, 50vw - 207px);
-}
+} */
 
 header {
   background-color: var(--red);
