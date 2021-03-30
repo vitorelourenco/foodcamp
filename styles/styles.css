@@ -28,7 +28,7 @@ body {
 }
 
 .d-none{
-  display: none;
+  display: none !important;
 }
 
 .d-initial{
@@ -37,11 +37,6 @@ body {
 
 .pointer {
   cursor: pointer;
-}
-
-.order-line {
-  display: flex;
-  justify-content: space-between;
 }
 
 header {
@@ -207,7 +202,7 @@ footer button{
 
 .checkout{
   width: calc(100% - 20px);
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   max-width: 414px;
   background-color: var(--checkout-green);
   color: white;
@@ -223,7 +218,17 @@ footer button{
   margin-bottom: 24px;
 }
 
-.checkout > *:last-child{
+.order{
+  width: 100%;
+}
+
+.order-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.order-line:last-child{
   margin-bottom: 0;
 }
 
@@ -237,6 +242,9 @@ footer button{
   font-weight: bold;
   letter-spacing: 0.018em;
   line-height: 26px;
+  margin-bottom: 1px;
+  font-size: 22px;
+
 }
 
 .confirm{
@@ -248,3 +256,5 @@ footer button{
   background-color: var(--checkout-green);
   color: white;
 }
+
+

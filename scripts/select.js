@@ -8,7 +8,6 @@ let selectSectionIDs = ["meals", "drinks", "desserts"];
 let orderName;
 let orderAddress;
 let checkoutScreen = document.querySelector(".checkout-background");
-let cancelOrder = document.querySelector(".cancel");
 let placeOrder = document.querySelector(".confirm");
 
 function updateCheckoutStatus(selectedArr){
@@ -77,13 +76,48 @@ for (let i=0; i<selectedArr.length; i++){
 
 checkoutButton.addEventListener("click", (e) => {
   if (checkoutButton.disabled) return;
-  orderName = prompt("Digite o seu nome");
-  orderAddress = prompt("Digite o seu endereco");
+  // orderName = prompt("Digite o seu nome");
+  // orderAddress = prompt("Digite o seu endereco");
   checkoutScreen.classList.remove("d-none");
   let orderBox = document.querySelector(".order");
-
+  let oLine;
+  let oItem;
+  let oPrice;
+  let priceCount = 0;
+  let total;
+  let totalStr;
+  for (let i=0; i<selectedArr.length; i++){
+    oLine = document.createElement("DIV");
+    oItem = document.createElement("P");
+    oItem.appendChild(document.createTextNode(selectedArr[i].querySelector("H3").textContent));
+    oLine.appendChild(oItem);
+    oItem = document.createElement("P");
+    oPrice = selectedArr[i].querySelector(".unit-price").textContent;
+    oItem.appendChild(document.createTextNode(oPrice));
+    oLine.appendChild(oItem);
+    oLine.classList.add("order-line");
+    orderBox.appendChild(oLine);
+    tempStr = oPrice;
+    tempStr = tempStr.replace("R$","");
+    tempStr = tempStr.replace(" ", "");
+    tempStr = tempStr.replace(",","");
+    priceCount += parseInt(tempStr, 10);
+    total = priceCount/100;
+    totalStr = "R$ " + total.toFixed(2).toString().replace(".",",");
+  }
+  oLine = document.createElement("DIV");
+  oItem = document.createElement("STRONG");
+  oItem.appendChild(document.createTextNode("TOTAL"));
+  oLine.appendChild(oItem);
+  oItem = document.createElement("STRONG");
+  oItem.appendChild(document.createTextNode(totalStr));
+  oLine.appendChild(oItem);
+  oLine.classList.add("order-line");
+  orderBox.appendChild(oLine);
 });
 
+
+let cancelOrder = document.querySelector(".cancel");
 cancelOrder.addEventListener("click", (e) => {
   checkoutScreen.classList.add("d-none");
 });
