@@ -12,7 +12,7 @@ font-family: 'Righteous', cursive; */
 }
 
 body {
-  background-color: var(--mute);
+  /* background-color: var(--mute); */
 }
 
 .bg-grey {
@@ -37,6 +37,13 @@ body {
 
 .pointer {
   cursor: pointer;
+}
+
+header,
+main, 
+footer {
+  max-width: 414px;
+  margin-left: max(0px, 50vw - 207px);
 }
 
 header {
@@ -69,7 +76,8 @@ header p{
 }
 
 main {
-  margin: 123px 0 108px 6px;
+  padding: 123px 0 108px 6px;
+  background-color: var(--mute);
 }
 
 section{
