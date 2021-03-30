@@ -116,12 +116,12 @@ const sectionIDs = ["meals", "drinks", "desserts"];
 
 
 for(let i=0; i<sectionIDs.length; i++){
-  let currentSection = document.getElementById(sectionIDs[i]);
-  let currentMenu = currentSection.querySelector(".menu");
+  const currentSection = document.getElementById(sectionIDs[i]);
+  const currentMenu = currentSection.querySelector(".menu");
   sectionArrs[i].forEach(elem => makeMenuItem(elem, currentMenu));
-  let spacer = document.createElement("P");
+  const spacer = document.createElement("P");
   spacer.classList.add("spacer");
-  let blankContent = document.createTextNode("_");
+  const blankContent = document.createTextNode("_");
   spacer.appendChild(blankContent);
   currentMenu.appendChild(spacer);
 }

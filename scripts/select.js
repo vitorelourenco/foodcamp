@@ -1,14 +1,5 @@
-let checkoutFooter = document.querySelector("FOOTER");
-let checkoutButton = checkoutFooter.querySelector("BUTTON");
-let selectedMeal;
-let selectedDrink;
-let selectedDessert;
-let selectedArr = [selectedMeal, selectedDrink, selectedDessert];
-let selectSectionIDs = ["meals", "drinks", "desserts"];
-let checkoutScreen = document.querySelector(".checkout-background");
-
 function updateCheckoutStatus(selectedArr){
-  let p = checkoutButton.querySelector("P");
+  const p = checkoutButton.querySelector("P");
   let textNode;
 
   if (!selectedArr[0] || !selectedArr[1] || !selectedArr[2]){
@@ -24,6 +15,7 @@ function updateCheckoutStatus(selectedArr){
     checkoutButton.disabled = true;
     return;
   }
+  
   p.innerHTML = "";
   textNode = document.createTextNode("Fechar Pedido");
   p.appendChild(textNode);
@@ -31,12 +23,18 @@ function updateCheckoutStatus(selectedArr){
   checkoutButton.classList.add("pointer");
   checkoutButton.classList.remove("bg-grey");
   checkoutButton.classList.add("bg-green");
+}
 
-} 
+const checkoutFooter = document.querySelector("FOOTER");
+const checkoutButton = checkoutFooter.querySelector("BUTTON");
+const checkoutScreen = document.querySelector(".checkout-background");
+
+const selectSectionIDs = ["meals", "drinks", "desserts"];
+const selectedArr = [undefined, undefined, undefined];
 
 for (let i=0; i<selectedArr.length; i++){
-  let currentGroup = document.getElementById(selectSectionIDs[i]);
-  let currentArticles = currentGroup.querySelectorAll("ARTICLE");
+  const currentGroup = document.getElementById(selectSectionIDs[i]);
+  const currentArticles = currentGroup.querySelectorAll("ARTICLE");
   currentArticles.forEach(item => {
     item.addEventListener("click", (e) => {
       let optionSelected = e.target;
@@ -74,12 +72,14 @@ for (let i=0; i<selectedArr.length; i++){
 let totalStr;
 let orderName;
 let orderAddress;
+
+const orderBox = document.querySelector(".order");
+
 checkoutButton.addEventListener("click", (e) => {
   if (checkoutButton.disabled) return;
   orderName = prompt("Digite o seu nome");
   orderAddress = prompt("Digite o seu endereco");
   checkoutScreen.classList.remove("d-none");
-  let orderBox = document.querySelector(".order");
   orderBox.innerHTML = "";
 
   let oLine;
@@ -103,9 +103,11 @@ checkoutButton.addEventListener("click", (e) => {
     tempStr = tempStr.replace(" ", "");
     tempStr = tempStr.replace(",","");
     priceCount += parseInt(tempStr, 10);
-    total = priceCount/100;
-    totalStr = "R$ " + total.toFixed(2).toString().replace(".",",");
   }
+  
+  total = priceCount/100;
+  totalStr = "R$ " + total.toFixed(2).toString().replace(".",",");
+
   oLine = document.createElement("DIV");
   oItem = document.createElement("STRONG");
   oItem.appendChild(document.createTextNode("TOTAL"));
@@ -117,14 +119,14 @@ checkoutButton.addEventListener("click", (e) => {
   orderBox.appendChild(oLine);
 });
 
-let cancelOrder = document.querySelector(".cancel");
+const cancelOrder = document.querySelector(".cancel");
 cancelOrder.addEventListener("click", (e) => {
   checkoutScreen.classList.add("d-none");
 });
 
-let placeOrder = document.querySelector(".confirm");
+const placeOrder = document.querySelector(".confirm");
 placeOrder.addEventListener("click", (e) => {
-  let message = 
+  const message = 
 `Ola, gostaria de fazer o pedido:\n
 - Prato: ${selectedArr[0].querySelector("H3").textContent}\n
 - Bebida: ${selectedArr[1].querySelector("H3").textContent}\n
@@ -132,8 +134,7 @@ placeOrder.addEventListener("click", (e) => {
 Total: ${totalStr}\n\n
 Nome: ${orderName}\n
 Endereco: ${orderAddress}\n`;
-  let encodedOrder = encodeURIComponent(message);
-  let fullUrl = "https://wa.me/5521971275567?text=" + encodedOrder;
+  const encodedOrder = encodeURIComponent(message);
+  const fullUrl = "https://wa.me/5521971275567?text=" + encodedOrder;
   window.open(fullUrl);
-
 });
