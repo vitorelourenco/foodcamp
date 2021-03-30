@@ -1,4 +1,4 @@
-let meals = [
+const meals = [
   {
     imgsrc : "assets/images/decarne.jpeg",
     imgalt : "Pastelao de Carne",
@@ -22,7 +22,7 @@ let meals = [
   }
 ];
 
-let drinks = [
+const drinks = [
   {
     imgsrc : "assets/images/coca2l.webp",
     imgalt : "Coca 2l",
@@ -46,7 +46,7 @@ let drinks = [
   }
 ];
 
-let desserts = [
+const desserts = [
   {
     imgsrc : "assets/images/dechocolate.png",
     imgalt : "Pastel de Chocolate",
@@ -71,37 +71,37 @@ let desserts = [
 ];
 
 function makeMenuItem (elem, obj) {
-  let node = document.createElement("ARTICLE");
+  const node = document.createElement("ARTICLE");
   node.classList.add("menu-item");
 
-  let itemWrapper = document.createElement("DIV");
+  const itemWrapper = document.createElement("DIV");
   itemWrapper.classList.add("item-wrapper");
-    let img = document.createElement("IMG");
+    const img = document.createElement("IMG");
     img.src = elem.imgsrc;
     img.alt = elem.imgalt;
     itemWrapper.appendChild(img);
 
-    let h3 = document.createElement("H3");
-    let hNode = document.createTextNode(elem.meal);
+    const h3 = document.createElement("H3");
+    const hNode = document.createTextNode(elem.meal);
     h3.appendChild(hNode);
     itemWrapper.appendChild(h3);
 
-    let p = document.createElement("P");
-    let pNode = document.createTextNode(elem.description);
+    const p = document.createElement("P");
+    const pNode = document.createTextNode(elem.description);
     p.appendChild(pNode);
     p.classList.add("unit-description");
     itemWrapper.appendChild(p);
   node.appendChild(itemWrapper);
 
-  let divWrapper = document.createElement("DIV");
+  const divWrapper = document.createElement("DIV");
   divWrapper.classList.add("price-wrapper");
-    let innerP = document.createElement("P");
+    const innerP = document.createElement("P");
     innerP.classList.add("unit-price");
-    let innerPNode = document.createTextNode(elem.price);
+    const innerPNode = document.createTextNode(elem.price);
     innerP.appendChild(innerPNode);
     divWrapper.appendChild(innerP);
 
-    let checkMark = document.createElement("ion-icon");
+    const checkMark = document.createElement("ion-icon");
     checkMark.classList.add("checked");
     checkMark.classList.add("d-none");
     checkMark.name = "checkmark-circle";
@@ -111,8 +111,8 @@ function makeMenuItem (elem, obj) {
   obj.appendChild(node);
 }
 
-let sectionArrs = [meals, drinks, desserts];
-let sectionIDs = ["meals", "drinks", "desserts"];
+const sectionArrs = [meals, drinks, desserts];
+const sectionIDs = ["meals", "drinks", "desserts"];
 
 
 for(let i=0; i<sectionIDs.length; i++){
