@@ -11,30 +11,6 @@ font-family: 'Righteous', cursive; */
   --ff-righteous : 'Righteous', cursive;
 }
 
-body {
-  /* background-color: var(--mute); */
-}
-
-.bg-grey {
-  background-color: var(--grey);
-}
-
-.bg-green {
-  background-color: var(--green);
-}
-
-.bg-white {
-  background-color: white;
-}
-
-.d-initial{
-  display: initial;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
 header,
 main, 
 footer {
@@ -293,3 +269,24 @@ footer button{
 .d-none{
   display: none;
 }
+
+.bg-grey {
+  background-color: var(--grey);
+}
+
+.bg-green {
+  background-color: var(--green);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.d-initial{
+  display: initial;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
