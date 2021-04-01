@@ -1,12 +1,14 @@
-//needed for checkout
-//global vars used inside functions
+//globals
 let orderName;
 let orderAddress;
 const checkoutButton = document.querySelector("footer button");
 const checkoutScreen = document.querySelector(".checkout-background");
+const cancelOrder = document.querySelector(".cancel");
+const placeOrder = document.querySelector(".confirm");
 const selectSectionIDs = ["meals", "drinks", "desserts"];
 //
 
+//function that handles the state of the order button
 function updateCheckoutStatus(){
   const p = checkoutButton.querySelector("P");
   if (!document.querySelector("#meals .selected") 
@@ -26,6 +28,9 @@ function updateCheckoutStatus(){
   checkoutButton.classList.add("bg-green");
 }
 
+//loop through all menu items, adding event listeners to all of them
+//the event listener functions looks for and replaces the selected item
+//if needed and then updates the checkoutstatus
 for (let i=0; i<selectSectionIDs.length; i++){
   const currentGroup = document.getElementById(selectSectionIDs[i]);
   const currentArticles = currentGroup.querySelectorAll("ARTICLE");
@@ -45,13 +50,14 @@ for (let i=0; i<selectSectionIDs.length; i++){
 
       let checky;
 
-      if (optionSelected === currentSelected){
-        currentSelected.classList.remove("selected");
-        checky = currentSelected.querySelector(".checked");
-        checky.classList.add("d-none");
-        updateCheckoutStatus();
-        return;
-      }
+      // uncomment the code bellow to enable item selection toggling
+      // if (optionSelected === currentSelected){
+      //   currentSelected.classList.remove("selected");
+      //   checky = currentSelected.querySelector(".checked");
+      //   checky.classList.add("d-none");
+      //   updateCheckoutStatus();
+      //   return;
+      // }
 
       if (currentSelected){
         currentSelected.classList.remove("selected");
@@ -68,6 +74,9 @@ for (let i=0; i<selectSectionIDs.length; i++){
   })
 }
 
+//Add the event listener that requests name/address
+//and builds the checkout screen through the selected items
+//if the order button is clicked
 checkoutButton.addEventListener("click", () => {
   if (checkoutButton.disabled) return;
   orderName = prompt("Digite o seu nome");
@@ -89,9 +98,7 @@ checkoutButton.addEventListener("click", () => {
     lastP.textContent = price;
 
     let tempStr = price;
-    tempStr = tempStr.replace("R$","");
-    tempStr = tempStr.replace(" ", "");
-    tempStr = tempStr.replace(",","");
+    tempStr = tempStr.replace("R$","").replace(" ", "").replace(",","");
     priceCount += parseInt(tempStr, 10);
   }
 
@@ -100,12 +107,15 @@ checkoutButton.addEventListener("click", () => {
   document.querySelector("#total").textContent = totalStr;
 });
 
-const cancelOrder = document.querySelector(".cancel");
+//Add event listener that closes the checkout screen
+//if the cancel button is clicked
 cancelOrder.addEventListener("click", () => {
   checkoutScreen.classList.add("d-none");
 });
 
-const placeOrder = document.querySelector(".confirm");
+//Add event listener that builds the order message
+//if the confirm order button is clicked 
+//and shoots it to whatsapp
 placeOrder.addEventListener("click", () => {
   const selectedMeal = document.querySelector("#meals .selected h3").textContent;
   const selectedDrink = document.querySelector("#drinks .selected h3").textContent;
