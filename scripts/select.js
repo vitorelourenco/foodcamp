@@ -66,7 +66,7 @@ for (let i=0; i<selectedArr.length; i++){
   })
 }
 
-checkoutButton.addEventListener("click", (e) => {
+checkoutButton.addEventListener("click", () => {
   if (checkoutButton.disabled) return;
   orderName = prompt("Digite o seu nome");
   orderAddress = prompt("Digite o seu endereco");
@@ -96,12 +96,12 @@ checkoutButton.addEventListener("click", (e) => {
 });
 
 const cancelOrder = document.querySelector(".cancel");
-cancelOrder.addEventListener("click", (e) => {
+cancelOrder.addEventListener("click", () => {
   checkoutScreen.classList.add("d-none");
 });
 
 const placeOrder = document.querySelector(".confirm");
-placeOrder.addEventListener("click", (e) => {
+placeOrder.addEventListener("click", () => {
   const message = 
 `Ola, gostaria de fazer o pedido:\n
 - Prato: ${selectedArr[0].querySelector("H3").textContent}\n
