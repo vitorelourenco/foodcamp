@@ -59,7 +59,7 @@ for (let i=0; i<selectSectionIDs.length; i++){
       //   return;
       // }
 
-      if (currentSelected){
+      if (currentSelected !== null){
         currentSelected.classList.remove("selected");
         checky = currentSelected.querySelector(".checked");
         checky.classList.add("d-none");
