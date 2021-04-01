@@ -1,3 +1,11 @@
+//needed for checkout
+//global vars used inside functions
+const selectedArr = [undefined, undefined, undefined];
+let totalStr;
+let orderName;
+let orderAddress;
+//
+
 function updateCheckoutStatus(selectedArr){
   const p = checkoutButton.querySelector("P");
   if (!selectedArr[0] || !selectedArr[1] || !selectedArr[2]){
@@ -15,12 +23,11 @@ function updateCheckoutStatus(selectedArr){
   checkoutButton.classList.add("bg-green");
 }
 
-const checkoutFooter = document.querySelector("FOOTER");
-const checkoutButton = checkoutFooter.querySelector("BUTTON");
+const checkoutButton = document.querySelector("footer button");
 const checkoutScreen = document.querySelector(".checkout-background");
 
 const selectSectionIDs = ["meals", "drinks", "desserts"];
-const selectedArr = [undefined, undefined, undefined];
+
 
 for (let i=0; i<selectedArr.length; i++){
   const currentGroup = document.getElementById(selectSectionIDs[i]);
@@ -59,10 +66,6 @@ for (let i=0; i<selectedArr.length; i++){
   })
 }
 
-let totalStr;
-let orderName;
-let orderAddress;
-
 const orderBox = document.querySelector(".order");
 
 checkoutButton.addEventListener("click", (e) => {
@@ -70,43 +73,28 @@ checkoutButton.addEventListener("click", (e) => {
   orderName = prompt("Digite o seu nome");
   orderAddress = prompt("Digite o seu endereco");
   checkoutScreen.classList.remove("d-none");
-  orderBox.innerHTML = "";
 
-  let oLine;
-  let oItem;
-  let oPrice;
+  const checkoutLines = document.querySelectorAll(".order-line");
   let priceCount = 0;
-  let total;
   for (let i=0; i<selectedArr.length; i++){
-    oLine = document.createElement("DIV");
-    oItem = document.createElement("P");
-    oItem.appendChild(document.createTextNode(selectedArr[i].querySelector("H3").textContent));
-    oLine.appendChild(oItem);
-    oItem = document.createElement("P");
-    oPrice = selectedArr[i].querySelector(".unit-price").textContent;
-    oItem.appendChild(document.createTextNode(oPrice));
-    oLine.appendChild(oItem);
-    oLine.classList.add("order-line");
-    orderBox.appendChild(oLine);
-    tempStr = oPrice;
+    const firstP = checkoutLines[i].querySelector("p:first-child");
+    const lastP = checkoutLines[i].querySelector("p:last-child");
+    const item = selectedArr[i].querySelector("h3").textContent;
+    const price = selectedArr[i].querySelector(".unit-price").textContent;
+
+    firstP.textContent = item;
+    lastP.textContent = price;
+
+    let tempStr = price;
     tempStr = tempStr.replace("R$","");
     tempStr = tempStr.replace(" ", "");
     tempStr = tempStr.replace(",","");
     priceCount += parseInt(tempStr, 10);
   }
 
-  total = priceCount/100;
+  const total = priceCount/100;
   totalStr = "R$ " + total.toFixed(2).toString().replace(".",",");
-
-  oLine = document.createElement("DIV");
-  oItem = document.createElement("STRONG");
-  oItem.appendChild(document.createTextNode("TOTAL"));
-  oLine.appendChild(oItem);
-  oItem = document.createElement("STRONG");
-  oItem.appendChild(document.createTextNode(totalStr));
-  oLine.appendChild(oItem);
-  oLine.classList.add("order-line");
-  orderBox.appendChild(oLine);
+  document.querySelector("#total").textContent = totalStr;
 });
 
 const cancelOrder = document.querySelector(".cancel");
