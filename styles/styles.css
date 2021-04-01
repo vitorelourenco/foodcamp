@@ -1,5 +1,3 @@
-/* font-family: 'Roboto', sans-serif;
-font-family: 'Righteous', cursive; */
 :root{
   --mute: #e5e5e5;
   --dark: #333;
@@ -10,13 +8,6 @@ font-family: 'Righteous', cursive; */
   --ff-roboto: 'Roboto', sans-serif;
   --ff-righteous : 'Righteous', cursive;
 }
-
-/* header,
-main, 
-footer {
-  max-width: 414px;
-  margin-left: max(0px, 50vw - 207px);
-} */
 
 header {
   background-color: var(--red);
@@ -302,4 +293,3 @@ footer button{
     display: none;
   }
 }
-
