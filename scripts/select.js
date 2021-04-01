@@ -1,7 +1,5 @@
 //needed for checkout
 //global vars used inside functions
-const selectedArr = [undefined, undefined, undefined];
-let totalStr;
 let orderName;
 let orderAddress;
 const checkoutButton = document.querySelector("footer button");
@@ -9,9 +7,11 @@ const checkoutScreen = document.querySelector(".checkout-background");
 const selectSectionIDs = ["meals", "drinks", "desserts"];
 //
 
-function updateCheckoutStatus(selectedArr){
+function updateCheckoutStatus(){
   const p = checkoutButton.querySelector("P");
-  if (!selectedArr[0] || !selectedArr[1] || !selectedArr[2]){
+  if (!document.querySelector("#meals .selected") 
+  || !document.querySelector("#drinks .selected") 
+  || !document.querySelector("#desserts .selected")){
     checkoutButton.classList.remove("bg-green");
     checkoutButton.classList.add("bg-grey");
     p.innerHTML = "Selecione os 3 itens<br>para fechar o pedido";
@@ -26,7 +26,7 @@ function updateCheckoutStatus(selectedArr){
   checkoutButton.classList.add("bg-green");
 }
 
-for (let i=0; i<selectedArr.length; i++){
+for (let i=0; i<selectSectionIDs.length; i++){
   const currentGroup = document.getElementById(selectSectionIDs[i]);
   const currentArticles = currentGroup.querySelectorAll("ARTICLE");
   currentArticles.forEach(item => {
@@ -36,29 +36,34 @@ for (let i=0; i<selectedArr.length; i++){
         optionSelected = optionSelected.parentNode; 
       }
 
+      let currentMenu = optionSelected;
+      while (!currentMenu.classList.contains("menu")){
+        currentMenu = currentMenu.parentNode;
+      }
+
+      const currentSelected = currentMenu.querySelector(".selected");
+
       let checky;
 
-      if (optionSelected === selectedArr[i]){
-        selectedArr[i].classList.remove("selected");
-        checky = selectedArr[i].querySelector(".checked");
+      if (optionSelected === currentSelected){
+        currentSelected.classList.remove("selected");
+        checky = currentSelected.querySelector(".checked");
         checky.classList.add("d-none");
-        selectedArr[i] = undefined;
-        updateCheckoutStatus(selectedArr);
+        updateCheckoutStatus();
         return;
       }
 
-      if (selectedArr[i]){
-        selectedArr[i].classList.remove("selected");
-        checky = selectedArr[i].querySelector(".checked");
+      if (currentSelected){
+        currentSelected.classList.remove("selected");
+        checky = currentSelected.querySelector(".checked");
         checky.classList.add("d-none");
       }
 
-      selectedArr[i] = optionSelected;
-      selectedArr[i].classList.add("selected");
-      checky = selectedArr[i].querySelector(".checked");
+      optionSelected.classList.add("selected");
+      checky = optionSelected.querySelector(".checked");
       checky.classList.remove("d-none");
       
-      updateCheckoutStatus(selectedArr);
+      updateCheckoutStatus();
     })
   })
 }
@@ -71,13 +76,16 @@ checkoutButton.addEventListener("click", () => {
 
   const checkoutLines = document.querySelectorAll(".order-line");
   let priceCount = 0;
-  for (let i=0; i<selectedArr.length; i++){
+  for (let i=0; i<selectSectionIDs.length; i++){
     const firstP = checkoutLines[i].querySelector("p:first-child");
     const lastP = checkoutLines[i].querySelector("p:last-child");
-    const item = selectedArr[i].querySelector("h3").textContent;
-    const price = selectedArr[i].querySelector(".unit-price").textContent;
 
+    const selectedItem = document.querySelector(`#${selectSectionIDs[i]} .selected h3`);
+    const item = selectedItem.textContent;
     firstP.textContent = item;
+
+    const selectedPrice = document.querySelector(`#${selectSectionIDs[i]} .selected .unit-price`);
+    const price = selectedPrice.textContent;
     lastP.textContent = price;
 
     let tempStr = price;
@@ -88,7 +96,7 @@ checkoutButton.addEventListener("click", () => {
   }
 
   const total = priceCount/100;
-  totalStr = "R$ " + total.toFixed(2).toString().replace(".",",");
+  const totalStr = "R$ " + total.toFixed(2).toString().replace(".",",");
   document.querySelector("#total").textContent = totalStr;
 });
 
@@ -99,12 +107,15 @@ cancelOrder.addEventListener("click", () => {
 
 const placeOrder = document.querySelector(".confirm");
 placeOrder.addEventListener("click", () => {
+  const selectedMeal = document.querySelector("#meals .selected h3").textContent;
+  const selectedDrink = document.querySelector("#drinks .selected h3").textContent;
+  const selectedDessert = document.querySelector("#desserts .selected h3").textContent;
   const message = 
 `Ola, gostaria de fazer o pedido:\n
-- Prato: ${selectedArr[0].querySelector("H3").textContent}\n
-- Bebida: ${selectedArr[1].querySelector("H3").textContent}\n
-- Sobremesa: ${selectedArr[2].querySelector("H3").textContent}\n
-Total: ${totalStr}\n\n
+- Prato: ${selectedMeal}\n
+- Bebida: ${selectedDrink}\n
+- Sobremesa: ${selectedDessert}\n
+Total: ${document.querySelector("#total").textContent}\n\n
 Nome: ${orderName}\n
 Endereco: ${orderAddress}\n`;
   const encodedOrder = encodeURIComponent(message);
