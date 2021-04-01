@@ -1,24 +1,14 @@
 function updateCheckoutStatus(selectedArr){
   const p = checkoutButton.querySelector("P");
-  let textNode;
-
   if (!selectedArr[0] || !selectedArr[1] || !selectedArr[2]){
     checkoutButton.classList.remove("bg-green");
     checkoutButton.classList.add("bg-grey");
-    p.innerHTML = "";
-    textNode = document.createTextNode("Selecione os 3 itens");
-    p.appendChild(textNode);
-    p.appendChild(document.createElement("BR"));
-    textNode = document.createTextNode("para fechar o pedido");
-    p.appendChild(textNode);
+    p.innerHTML = "Selecione os 3 itens<br>para fechar o pedido"
     checkoutButton.classList.remove("pointer");
     checkoutButton.disabled = true;
     return;
   }
-  
-  p.innerHTML = "";
-  textNode = document.createTextNode("Fechar Pedido");
-  p.appendChild(textNode);
+  p.innerHTML = "Fechar Pedido";
   checkoutButton.disabled = false;
   checkoutButton.classList.add("pointer");
   checkoutButton.classList.remove("bg-grey");
