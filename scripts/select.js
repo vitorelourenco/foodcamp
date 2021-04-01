@@ -4,6 +4,9 @@ const selectedArr = [undefined, undefined, undefined];
 let totalStr;
 let orderName;
 let orderAddress;
+const checkoutButton = document.querySelector("footer button");
+const checkoutScreen = document.querySelector(".checkout-background");
+const selectSectionIDs = ["meals", "drinks", "desserts"];
 //
 
 function updateCheckoutStatus(selectedArr){
@@ -22,12 +25,6 @@ function updateCheckoutStatus(selectedArr){
   checkoutButton.classList.remove("bg-grey");
   checkoutButton.classList.add("bg-green");
 }
-
-const checkoutButton = document.querySelector("footer button");
-const checkoutScreen = document.querySelector(".checkout-background");
-
-const selectSectionIDs = ["meals", "drinks", "desserts"];
-
 
 for (let i=0; i<selectedArr.length; i++){
   const currentGroup = document.getElementById(selectSectionIDs[i]);
