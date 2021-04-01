@@ -11,7 +11,7 @@ function updateCheckoutStatus(selectedArr){
   if (!selectedArr[0] || !selectedArr[1] || !selectedArr[2]){
     checkoutButton.classList.remove("bg-green");
     checkoutButton.classList.add("bg-grey");
-    p.innerHTML = "Selecione os 3 itens<br>para fechar o pedido"
+    p.innerHTML = "Selecione os 3 itens<br>para fechar o pedido";
     checkoutButton.classList.remove("pointer");
     checkoutButton.disabled = true;
     return;
@@ -65,8 +65,6 @@ for (let i=0; i<selectedArr.length; i++){
     })
   })
 }
-
-const orderBox = document.querySelector(".order");
 
 checkoutButton.addEventListener("click", (e) => {
   if (checkoutButton.disabled) return;
