@@ -26,7 +26,7 @@ function updateCheckoutStatus(){
   checkoutButton.classList.add("bg-green");
 }
 
-//the onclick function look for and replace the selected item
+//the onclick function looks for and replaces the selected item
 //if needed and then updates the checkoutstatus
 function handleSelection(itemClass){
   let optionSelected = document.querySelector(itemClass);
