@@ -3,17 +3,15 @@ let orderName;
 let orderAddress;
 const checkoutButton = document.querySelector("footer button");
 const checkoutScreen = document.querySelector(".checkout-background");
-const cancelOrder = document.querySelector(".cancel");
-const placeOrder = document.querySelector(".confirm");
 const selectSectionIDs = ["meals", "drinks", "desserts"];
 //
 
 //function that handles the state of the order button
 function updateCheckoutStatus(){
   const p = checkoutButton.querySelector("P");
-  if (!document.querySelector("#meals .selected") 
-  || !document.querySelector("#drinks .selected") 
-  || !document.querySelector("#desserts .selected")){
+  if (document.querySelector("#meals .selected") === null
+  || document.querySelector("#drinks .selected") === null
+  || document.querySelector("#desserts .selected") === null){
     checkoutButton.classList.remove("bg-green");
     checkoutButton.classList.add("bg-grey");
     p.innerHTML = "Selecione os 3 itens<br>para fechar o pedido";
@@ -29,7 +27,7 @@ function updateCheckoutStatus(){
 }
 
 //loop through all menu items, adding event listeners to all of them
-//the event listener functions looks for and replaces the selected item
+//the event listener functions look for and replace the selected item
 //if needed and then updates the checkoutstatus
 for (let i=0; i<selectSectionIDs.length; i++){
   const currentGroup = document.getElementById(selectSectionIDs[i]);
@@ -74,10 +72,10 @@ for (let i=0; i<selectSectionIDs.length; i++){
   })
 }
 
-//Add the event listener that requests name/address
+//Checkout function that asks for name/address
 //and builds the checkout screen through the selected items
 //if the order button is clicked
-checkoutButton.addEventListener("click", () => {
+function goToCheckout(){
   if (checkoutButton.disabled) return;
   orderName = prompt("Digite o seu nome");
   orderAddress = prompt("Digite o seu endereco");
@@ -105,18 +103,17 @@ checkoutButton.addEventListener("click", () => {
   const total = priceCount/100;
   const totalStr = "R$ " + total.toFixed(2).toString().replace(".",",");
   document.querySelector("#total").textContent = totalStr;
-});
+}
 
-//Add event listener that closes the checkout screen
-//if the cancel button is clicked
-cancelOrder.addEventListener("click", () => {
+//Order cancelation function
+function dumpOrder(){
   checkoutScreen.classList.add("d-none");
-});
+}
 
 //Add event listener that builds the order message
 //if the confirm order button is clicked 
 //and shoots it to whatsapp
-placeOrder.addEventListener("click", () => {
+function placeOrder(){
   const selectedMeal = document.querySelector("#meals .selected h3").textContent;
   const selectedDrink = document.querySelector("#drinks .selected h3").textContent;
   const selectedDessert = document.querySelector("#desserts .selected h3").textContent;
@@ -132,4 +129,4 @@ Endereco: ${orderAddress}\n`;
   const fullUrl = "https://wa.me/5521971275567?text=" + encodedOrder;
   checkoutScreen.classList.add("d-none");
   window.open(fullUrl);
-});
+}

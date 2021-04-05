@@ -33,8 +33,8 @@
           <strong id="total"></strong>
         </div>
       </div>
-      <button class="confirm">Tudo certo, pode pedir!</button>
-      <button class="cancel">Cancelar</button>
+      <button class="confirm" onclick='placeOrder()'>Tudo certo, pode pedir!</button>
+      <button class="cancel" onclick='dumpOrder()'>Cancelar</button>
     </div>
   </div>
   <header>
@@ -160,7 +160,7 @@
     </section>
   </main>
   <footer>
-    <button class="bg-grey" disabled>
+    <button class="bg-grey" disabled onclick='goToCheckout()'>
       <p class="goto-checkout-text">Selecione os 3 itens<br>para fechar o pedido</p>
     </button>
   </footer>
