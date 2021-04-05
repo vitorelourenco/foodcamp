@@ -87,7 +87,6 @@ const sectionIDs = ["meals", "drinks", "desserts"];
 
 for(let i=0; i<sectionIDs.length; i++){
   const currentSection = document.getElementById(sectionIDs[i]);
-  console.log(currentSection);
   const menuItems = currentSection.querySelectorAll(".menu-item");
   for(let j=0; j<menuItems.length; j++){
     fillMenu(menuItems[j],sectionArrs[i][j]);

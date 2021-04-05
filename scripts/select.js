@@ -26,54 +26,43 @@ function updateCheckoutStatus(){
   checkoutButton.classList.add("bg-green");
 }
 
-//loop through all menu items, adding event listeners to all of them
-//the event listener functions look for and replace the selected item
+//the onclick function look for and replace the selected item
 //if needed and then updates the checkoutstatus
-for (let i=0; i<selectSectionIDs.length; i++){
-  const currentGroup = document.getElementById(selectSectionIDs[i]);
-  const currentArticles = currentGroup.querySelectorAll("ARTICLE");
-  currentArticles.forEach(item => {
-    item.addEventListener("click", (e) => {
-      let optionSelected = e.target;
-      while (optionSelected.tagName != "ARTICLE"){
-        optionSelected = optionSelected.parentNode; 
-      }
+function handleSelection(itemClass){
+  let optionSelected = document.querySelector(itemClass);
 
-      let currentMenu = optionSelected;
-      while (!currentMenu.classList.contains("menu")){
-        currentMenu = currentMenu.parentNode;
-      }
+  let currentMenu = optionSelected;
+  while (!currentMenu.classList.contains("menu")){
+    currentMenu = currentMenu.parentNode;
+  }
 
-      const currentSelected = currentMenu.querySelector(".selected");
+  const currentSelected = currentMenu.querySelector(".selected");
 
-      let checky;
+  let checky;
 
-      // uncomment the code bellow to enable item selection toggling
-      // if (optionSelected === currentSelected){
-      //   currentSelected.classList.remove("selected");
-      //   checky = currentSelected.querySelector(".checked");
-      //   checky.classList.add("d-none");
-      //   updateCheckoutStatus();
-      //   return;
-      // }
+  if (optionSelected === currentSelected){
+    currentSelected.classList.remove("selected");
+    checky = currentSelected.querySelector(".checked");
+    checky.classList.add("d-none");
+    updateCheckoutStatus();
+    return;
+  }
 
-      if (currentSelected !== null){
-        currentSelected.classList.remove("selected");
-        checky = currentSelected.querySelector(".checked");
-        checky.classList.add("d-none");
-      }
+  if (currentSelected !== null){
+    currentSelected.classList.remove("selected");
+    checky = currentSelected.querySelector(".checked");
+    checky.classList.add("d-none");
+  }
 
-      optionSelected.classList.add("selected");
-      checky = optionSelected.querySelector(".checked");
-      checky.classList.remove("d-none");
-      
-      updateCheckoutStatus();
-    })
-  })
+  optionSelected.classList.add("selected");
+  checky = optionSelected.querySelector(".checked");
+  checky.classList.remove("d-none");
+  
+  updateCheckoutStatus();
 }
 
 //Checkout function that asks for name/address
-//and builds the checkout screen through the selected items
+//and builds the checkout screen using the selected items
 //if the order button is clicked
 function goToCheckout(){
   if (checkoutButton.disabled) return;
@@ -110,9 +99,6 @@ function dumpOrder(){
   checkoutScreen.classList.add("d-none");
 }
 
-//Add event listener that builds the order message
-//if the confirm order button is clicked 
-//and shoots it to whatsapp
 function placeOrder(){
   const selectedMeal = document.querySelector("#meals .selected h3").textContent;
   const selectedDrink = document.querySelector("#drinks .selected h3").textContent;
